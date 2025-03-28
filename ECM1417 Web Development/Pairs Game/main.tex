@@ -1,0 +1,72 @@
+\documentclass{article}
+
+\usepackage[a4paper,margin={2cm,2.5cm}]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage{amsmath}
+
+\title{\textbf{ECM1417: Web Development} \\ \textit{Pairs Game Coursework}}
+\author{730002704}
+\date{Tuesday, 19th March 2025}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section*{Declaration}
+AI-supported use is permitted in this assessment. I acknowledge the following uses of GenAI tools in this assessment:
+\begin{itemize}
+    \item I have used GenAI tools to assist with research or gathering information.
+\end{itemize}
+I declare that I have referenced use of GenAI outputs within my assessment in line with the University referencing guidelines.
+
+\section{Design}
+\subsection{Overarching Design}
+The website has a home page, page to play the pairs game, leaderboard, and registration page. These are connected by a bootstrap navbar in \texttt{includes/header.php} and a footer in \texttt{includes/footer.php}. By importing these files into each page, the website has a consistent design. Using a shared header makes development easier as changes only need to be made in one place.
+
+The home page has a welcome message and a button to play the pairs game if the user is logged in, and otherwise shows a link to register.
+
+When users register, they must choose a username and can configure a profile image from an emoji and background colour. This is then shown in the navbar and on the leaderboard. These data are stored in a cookie so that the user does not need to log in each time they visit the site.
+
+The pairs game page has a 5x2 grid of cards created from randomly combined components. Clicking on a card flips it over, and if two cards are matched they stay flipped. Each `attempt' (combination of two cards flipped), a counter is incremented. The user's score is then calculated as:
+\begin{equation*}
+    \left\lfloor \frac{10000}{\text{attempts} + \text{time}} \right\rfloor
+\end{equation*}
+where time is the time taken to complete the game in seconds.
+
+Upon completion of a game, the user has the option to submit their score to the leaderboard, which is done with a \texttt{PUSH} request to \texttt{leaderboard.php}. This page then adds the score to the leaderboard in the database, which is a simple \texttt{.csv} file. I chose to use a \texttt{.csv} file as it is simple to implement and works well for this basic use case.
+
+The leaderboard shows a table of all the scores that have been submitted, sorted by score in descending order.
+
+\subsection{Known Issues}
+It is not possible for users to log out, and multiple users can use the same username. This is because I have not implemented a database to store user data, and instead use cookies to store the user's username and profile image. This is a security risk as cookies can be easily manipulated, and so this would need to be addressed in a production environment.
+
+It is theoretically possible, although unlikely, for two pairs (four total cards) to be the same. Although the code would correctly handle this and allow any combination of cards to be matched, it could be confusing for the user.
+
+\subsection{Issues Encountered}
+The large background image featured on every page took a long time to load, and so I used a file compression tool to reduce the file size. This improved the load time of the website.
+
+During deployment I encountered an issue where the leaderboard was not updating. Checking the Apache \texttt{error.log} file showed that the web server did not have permission to write to the \texttt{leaderboard.txt} file. I resolved this by changing the permissions of the file with \texttt{chmod 666 leaderboard.txt}.
+
+\section{Development Log}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{llll}
+        \toprule
+        \textbf{Date} & \textbf{Time} & \textbf{Duration} & \textbf{Activity}            \\
+        \midrule
+        10/03/2025    & 10:00         & 2 hours           & Initial setup of website     \\
+        11/03/2025    & 14:00         & 1.5 hours         & Created home page            \\
+        13/03/2025    & 11:00         & 2 hours           & Created registration page    \\
+        14/03/2025    & 09:00         & 2 hours           & Work on pairs game           \\
+        15/03/2025    & 10:00         & 1.5 hours         & Finish pairs game            \\
+        16/03/2025    & 14:00         & 2 hours           & Create leaderboard           \\
+        17/03/2025    & 09:00         & 2 hours           & Deployment and create report \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+\end{document}

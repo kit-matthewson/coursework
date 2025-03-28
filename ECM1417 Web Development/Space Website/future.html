@@ -1,0 +1,134 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Human Space Exploration | Future</title>
+    <style>
+      /* Styles for the timeline container */
+      .timeline {
+        position: relative;
+        width: 80%;
+        margin: 20px auto;
+        padding: 20px;
+      }
+
+      /* Vertical line in the timeline. The ::after pseudo-element creates the line */
+      .timeline::after {
+        content: ""; /* Required for pseudo-element */
+        position: absolute;
+        width: 6px;
+        background-color: darkblue;
+        top: 0;
+        bottom: 0;
+        /* Center the line */
+        left: 50%;
+        margin-left: -3px;
+        /* Position behind other elements */
+        z-index: -1;
+      }
+
+      /* Styles for each card in the timeline */
+      .card {
+        width: 50%;
+        padding: 20px;
+        margin: 20px auto;
+        background-color: white;
+        border: 1px solid lightgray;
+        border-radius: 6px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Styles for the card title */
+      .card h3 {
+        font-size: 20px;
+        font-weight: bold;
+        color: darkblue;
+        margin-bottom: 10px;
+      }
+
+      /* Styles for the card paragraph */
+      .card p {
+        font-size: 16px;
+        color: black;
+      }
+
+      /* Styles for the card image */
+      .card img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        float: left;
+        margin-right: 15px;
+        border: 2px solid darkblue;
+      }
+
+      /* Hover effect for the card image */
+      .card img:hover {
+        transform: scale(1.1);
+        transition: transform 0.2s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="menu">
+      <a href="home.html">
+        <img
+          src="assets/images/icon.png"
+          alt="Home"
+          height="40px"
+          style="margin: 5px" />
+      </a>
+
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="future.html">Future</a></li>
+      <li><a href="history.html">History</a></li>
+      <li><a href="home.html">Home</a></li>
+    </ul>
+
+    <div class="content">
+      <h1>Future</h1>
+      <h2>Timeline</h2>
+
+      <!-- Timeline container -->
+      <div class="timeline">
+        <div class="card">
+          <img
+            src="assets/images/intuitive_machines_4.png"
+            alt="Intuitive Machines 4" />
+          <h3>Launch of Intuitive Machines 4</h3>
+          <p>
+            Intuitive Machines 4 (CP-22) is a lander mission to the south pole
+            region of the Moon, currently planned for the Mons Mouton region,
+            scheduled for 2027. It will carry a suite of six science payloads,
+            with a total mass of 79 kg, to the surface.
+          </p>
+        </div>
+
+        <div class="card">
+          <img src="assets/images/dragonfly_sm.jpg" alt="Dragonfly" />
+          <h3>Launch of Dragonfly to Titan</h3>
+          <p>
+            Dragonfly is a rotorcraft mission to explore Saturn's moon Titan by
+            making flights to various sites separated by tens of kilometers and
+            making measurements over a period of more than two years. The
+            primary goal is to explore the chemistry and habitability of
+            multiple surface sites covering a large area. It aims to launch in
+            2028.
+          </p>
+        </div>
+
+        <div class="card">
+          <img src="assets/images/pioneer_patch.gif" alt="Mission 3" />
+          <h3>Pioneer 11 Lamda Aquila Flyby</h3>
+          <p>
+            In 4,000,000 years Pioneer 11 will make a close approach to the star
+            Lamda Aquila, located around 125 light years from Earth.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>&copy; Copyright 2025. All rights reserved.</p>
+    </div>
+  </body>
+</html>

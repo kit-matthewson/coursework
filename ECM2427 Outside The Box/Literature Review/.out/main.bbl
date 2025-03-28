@@ -1,0 +1,72 @@
+\begin{thebibliography}{10}
+
+\bibitem{gong2017survey}
+W.~Gong and X.~Zhou, ``A survey of {SAT} solvers,'' {\em AIP Conference
+  Proceedings}, vol.~1836, 06 2017.
+
+\bibitem{cook2023complexity}
+S.~A. Cook, {\em The Complexity of Theorem-Proving Procedures},
+  pp.~143–--152.
+\newblock New York, NY, USA: Association for Computing Machinery, 1~ed., 2023.
+
+\bibitem{gelder2011generalized}
+A.~V. Gelder, ``Generalized conflict-clause strengthening for satisfiability
+  solvers,'' in {\em Theory and Applications of Satisfiability Testing} (K.~A.
+  Sakallah and L.~Simon, eds.), (Berlin, Heidelberg), pp.~329--342, Springer
+  Berlin Heidelberg, 2011.
+
+\bibitem{martin1960computing}
+M.~Davis and H.~Putnam, ``A computing procedure for quantification theory,''
+  {\em J. ACM}, vol.~7, no.~3, p.~201–215, 1960.
+
+\bibitem{marques1999impact}
+J.~P. Marques-Silva, {\em The Impact of Branching Heuristics in Propositional
+  Satisfiability Algorithms}.
+\newblock Springer Berlin Heidelberg, 1999.
+
+\bibitem{gent1993empirical}
+I.~P. Gent and T.~Walsh, ``An empirical analysis of search in {GSAT},'' {\em
+  Journal of Artificial Intelligence Research}, no.~1, pp.~47--59, 1993.
+
+\bibitem{marques1999grasp}
+J.~P. Marques-Silva and K.~A. Sakallah, ``{GRASP}: A search algorithm for
+  propositional satisfiability,'' {\em IEEE Transactions on Computers},
+  vol.~48, no.~5, 1999.
+
+\bibitem{marques2008handbook}
+J.~Marques-Silva, I.~Lynce, and S.~Malik, {\em Handbook of Satisfiability}.
+\newblock IOS Press, 2008.
+
+\bibitem{katebi2011empirical}
+H.~Katebi, K.~A. Sakallah, and J.~P. Marques-Silva, ``Empirical study of the
+  anatomy of modern {SAT} solvers,'' in {\em Theory and Applications of
+  Satisfiability Testing} (K.~A. Sakallah and L.~Simon, eds.), (Berlin,
+  Heidelberg), pp.~343--356, Springer Berlin Heidelberg, 2011.
+
+\bibitem{gomes1997heavy}
+C.~P. Gomes, B.~Selman, and N.~Crato, ``Heavy-tailed distributions in
+  combinatorial search,'' in {\em Principles and Practice of Constraint
+  Programming-CP97}, pp.~121--135, Springer, 1997.
+
+\bibitem{moskewicz2001chaff}
+M.~W. Moskewicz, C.~F. Madigan, Y.~Zhao, L.~Zhang, and S.~Malik, ``Chaff:
+  engineering an efficient sat solver,'' in {\em Proceedings of the 38th Annual
+  Design Automation Conference}, DAC '01, (New York, NY, USA), p.~530–535,
+  Association for Computing Machinery, 2001.
+
+\bibitem{ivancic2008efficient}
+F.~Ivancic, Z.~Yang, M.~K. Ganai, A.~Gupta, and P.~Ashar, ``Efficient sat-based
+  bounded model checking for software verification,'' {\em Elsevier}, 2008.
+
+\bibitem{biere2009handbook}
+V.~D'Silva, D.~Kroening, and G.~Weissenbacher, ``A survey of automated
+  techniques for formal software verification,'' {\em IEEE Transactions on
+  Computer-Aided Design of Integrated Circuits and Systems}, vol.~27, no.~7,
+  pp.~1165--1178, 2008.
+
+\bibitem{mirnov2006applications}
+I.~Mironov and L.~Zhang, ``Applications of {SAT} solvers to cryptanalysis of
+  hash functions,'' in {\em Theory and Applications of Satisfiability Testing},
+  pp.~102--115, 2006.
+
+\end{thebibliography}

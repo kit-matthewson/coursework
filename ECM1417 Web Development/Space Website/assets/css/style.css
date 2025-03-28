@@ -1,0 +1,151 @@
+/* General Styles */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: black;
+  margin: 0px;
+}
+
+.content {
+  margin: 8px;
+}
+
+/* Hero Section */
+.hero-container {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.hero {
+  width: 100%;
+  height: 100%;
+  object-position: center -100px;
+  object-fit: cover;
+}
+
+/* Headings */
+h1 {
+  font-weight: bold;
+  font-size: 24px;
+  color: darkblue;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 20px;
+  color: darkblue;
+}
+
+/* Menu */
+ul.menu {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+  background-color: blue;
+  overflow: hidden;
+}
+
+ul.menu li {
+  float: right;
+  height: 40px;
+  margin: 5px;
+}
+
+ul.menu li a {
+  display: block;
+  width: 5cm;
+  height: 0.7cm;
+  padding-top: 10px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+ul.menu li a:hover {
+  background-color: darkblue;
+}
+
+/* Footer */
+div.footer {
+  color: black;
+  font-weight: bold;
+  height: 0.7cm;
+  padding-top: 10px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+/* Images */
+.image-container {
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  display: block;
+  margin: 5px;
+}
+
+.image-container p {
+  font-size: 12px;
+  text-align: center;
+  font-style: italic;
+}
+
+.grow:hover {
+  transform: scale(1.2);
+  transition: transform 0.2s ease;
+}
+
+.image-col .image-container {
+  margin: 10px;
+}
+
+.image-col .image-container p {
+  font-size: 14px;
+  font-style: italic;
+  color: darkgray;
+}
+
+.image-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-row {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Events */
+.event {
+  padding: 5px;
+  margin-bottom: 40px;
+  border: 1px solid transparent;
+}
+
+.event:hover {
+  border: 1px solid blue;
+  box-shadow: 0 0 10px blue;
+}
+
+/* Form */
+input {
+  margin: 10px;
+}
+
+label {
+  margin: 10px;
+}
+
+button {
+  margin: 10px;
+  background-color: navy;
+  color: white;
+}
+
+button:hover {
+  background-color: lightblue;
+}

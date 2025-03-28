@@ -1,0 +1,15 @@
+﻿Salesperson,,,,,,Product Sale,,,,Product,,,,Department,
+Salesperson Number,Salesperson Name,Commission Percentage,Year of Hire,Department Number,,Product Number,Quantity,Salesperson,,Product Number,Product Name,Unit Price,,Department Number,Manager Name
+37,Baker,10,2015,73,,6722,688,37,,6722,Pliers,11.50,,73,Scott
+86,Adams,15,2011,59,,4013,170,37,,4013,Saw,26.25,,59,Lopez
+14,Johnson,10,2018,59,,9440,473,37,,9440,Hammer,17.50,,,
+61,Davies,20,2011,59,,6386,1745,86,,6386,Wrench,12.95,,,
+,,,,,,9440,2529,86,,1765,Drill,32.99,,,
+,,,,,,1765,1962,86,,,,,,,
+,,,,,,4013,3071,86,,,,,,,
+,,,,,,1765,809,14,,,,,,,
+,,,,,,6722,734,14,,,,,,,
+,,,,,,6386,3729,61,,,,,,,
+,,,,,,1765,3110,61,,,,,,,
+,,,,,,6722,2738,61,,,,,,,
+,,,,,,,,,,,,,,,

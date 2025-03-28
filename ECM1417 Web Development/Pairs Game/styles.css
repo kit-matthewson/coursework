@@ -1,0 +1,12 @@
+body {
+  font-family: Verdana, sans-serif;
+  background-image: url("./assets/images/arcade-unsplash-compressed.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+#main {
+  padding: 40px 120px;
+}
