@@ -1,0 +1,28 @@
+6  13                          start a new pile
+6  13 10                       start a new pile
+6  13 10 13                    start a new pile
+6  13 10 13 10                 start a new pile
+6  13 10 13 10 2               start a new pile
+6  13 10 13 10 2  1            10 and 1 add to 11
+6  13 12 13 10 2  5            6 and 5 add to 11
+2  13 12 13 10 2  6            start a new pile
+2  13 12 13 10 2  6  9         2 and 9 add to 11
+11 13 12 13 10 2  6  5         JQK visible
+12 11 5  13 10 2  6  5         5 and 6 add to 11
+12 11 4  13 10 2  1  5         JQK visible
+12 3  4  10 10 2  1  5         10 and 1 add to 11
+12 3  4  7  10 2  6  5         4 and 7 add to 11
+12 3  13 1  10 2  6  5         1 and 10 add to 11
+12 3  13 3  3  2  6  5         6 and 5 add to 11
+12 3  13 3  3  2  9  7         2 and 9 add to 11
+12 3  13 3  3  9  8  7         3 and 8 add to 11
+12 7  13 3  3  9  8  7         3 and 8 add to 11
+12 7  13 4  3  9  4  7         7 and 4 add to 11
+12 11 13 5  3  9  4  7         JQK visible
+6  12 2  5  3  9  4  7         6 and 5 add to 11
+2  12 2  11 3  9  4  7         2 and 9 add to 11
+13 12 2  11 3  10 4  7         JQK visible
+3  8  2  4  3  10 4  7         3 and 8 add to 11
+8  1  2  4  3  10 4  7         8 and 3 add to 11
+8  1  2  4  3  10 4  7         start a new pile
+Win: no cards remain

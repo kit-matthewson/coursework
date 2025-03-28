@@ -1,0 +1,19 @@
+5  11                          start a new pile
+5  11 1                        start a new pile
+5  11 1  7                     start a new pile
+5  11 1  7  9                  start a new pile
+5  11 1  7  9  10              1 and 10 add to 11
+5  11 7  7  9  12              start a new pile
+5  11 7  7  9  12 8            start a new pile
+5  11 7  7  9  12 8  2         9 and 2 add to 11
+5  11 7  7  3  12 8  11        3 and 8 add to 11
+5  11 7  7  12 12 1  11        start a new pile
+5  11 7  7  12 12 1  11 13     JQK visible
+5  10 7  7  6  12 1  11 6      5 and 6 add to 11
+6  10 7  7  13 12 1  11 6      JQK visible
+6  10 7  7  8  8  1  9  6      10 and 1 add to 11
+6  4  7  7  8  8  11 9  6      4 and 7 add to 11
+6  13 2  7  8  8  11 9  6      2 and 9 add to 11
+6  13 4  7  8  8  11 2  6      4 and 7 add to 11
+6  13 7  1  8  8  11 2  6      start a new pile
+Loss: 21 cards remain

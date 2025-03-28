@@ -1,0 +1,26 @@
+The key with the most variations is 'eerst', forming 8 words:
+  tsere
+  terse
+  stere
+  steer
+  reset
+  reest
+  estre
+  ester
+
+The longest pair of words has the key 'ccddeehlmnooooossttuyy', with:
+  duodenocholecystostomy
+  cholecystoduodenostomy
+
+Histogram of log(variants):
+2   *********************************************************************************  8.139
+3   ***********************************************************  5.943
+4   ***************************************  3.951
+5   *********************  2.079
+6   ***********  1.099
+7     0.000
+8     0.000
+9     0.000
+10    0.000
+11    0.000
+12    0.000

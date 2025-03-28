@@ -1,0 +1,15 @@
+Note: words-smaller.txt was missing some anagrams for the example words, so these were added to the file.
+
+Read 20510 words, creating linked list...
+Created linked list of anagrams.
+
+Enter a word: orchestra
+Word has 2 anagrams:
+   orchestra
+   carthorse
+
+Enter a word: damned
+Word has 3 anagrams:
+   madden
+   damned
+   demand
