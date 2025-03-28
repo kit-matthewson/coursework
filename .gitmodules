@@ -1,3 +1,6 @@
 [submodule "ECM2434 Software Development"]
 	path = ECM2434 Software Development
 	url = https://github.com/edf1101/ECM2434
+[submodule "ECM2414 Software Development"]
+	path = ECM2414 Software Development
+	url = https://github.com/rb979/ECMC2414CA
