@@ -8,3 +8,7 @@
 - **ECM2427 Outside The Box**: Two projects, a literature review on SAT Solvers (a topic of my choice) and a group presentation on sustainability in computer science (68%).
 - **ECM2433 The C Family**: A collection of programming problems solved in C (90%).
 - **ECM2434 Software Development**: A large group project to produce a web app in DJango (77%).
+
+## Third Year Modules
+- **ECM3422 Computability and Complexity**: Two implementations of a SAT solver in Python, one naive (brute-force) and one DPLL (--%).
+- **ECM3428 Algorithms that Changed the World**: A report on and Rust implementation of the LL(1) parsing algorithm (--%).

@@ -4,3 +4,9 @@
 [submodule "ECM2414 Software Development"]
 	path = ECM2414 Software Development
 	url = https://github.com/rb979/ECMC2414CA
+[submodule "ECM3422 Computability and Complexity"]
+	path = ECM3422 Computability and Complexity
+	url = ./ECM3422 Computability and Complexity
+[submodule "ECM3428 Algorithms that Changed the World"]
+	path = ECM3428 Algorithms that Changed the World
+	url = ./ECM3428 Algorithms that Changed the World
