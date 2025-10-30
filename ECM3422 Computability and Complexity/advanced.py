@@ -58,10 +58,8 @@ def propagate_literal(formula: Expression, literal: Literal) -> Expression:
         if literal in clause:
             continue
 
-        if literal.complement() in clause:
-            clause.remove(literal.complement())
-
-        new_formula += [clause]
+        new_clause = [lit for lit in clause if lit != literal.complement()]
+        new_formula.append(new_clause)
 
     return new_formula
 
@@ -90,7 +88,7 @@ def find_pure_literal(formula: Formula) -> Literal | None:
     lits = set()
 
     for clause in formula:
-        lits.union(clause)
+        lits.update(clause)
 
     for lit in lits:
         comp = lit.complement()
@@ -112,22 +110,29 @@ def to_cnf(expression: Expression) -> Formula:
 
             # (a AND b) OR y -> ((a OR y) AND (b OR y))
             if isinstance(left, Conjunction):
-                return Conjunction(
-                    _distribute(Disjunction(left.left, right)),
-                    _distribute(Disjunction(left.right, right)),
+                return _distribute(
+                    Conjunction(
+                        Disjunction(left.left, right),
+                        Disjunction(left.right, right),
+                    )
                 )
 
             # ... or the mirror
             if isinstance(right, Conjunction):
-                return Conjunction(
-                    _distribute(Disjunction(left, right.left)),
-                    _distribute(Disjunction(left, right.right)),
+                return _distribute(
+                    Conjunction(
+                        Disjunction(left, right.left),
+                        Disjunction(left, right.right),
+                    )
                 )
 
-        if isinstance(expr, Conjunction):
+            return Disjunction(left, right)
+
+        elif isinstance(expr, Conjunction):
             return Conjunction(_distribute(expr.left), _distribute(expr.right))
 
-        return expr
+        else:
+            return expr
 
     def _to_formula(expr: Expression) -> Formula:
         if isinstance(expr, Literal):

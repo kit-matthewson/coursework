@@ -38,6 +38,4 @@ def solve(cs):
     """
     expr = parse_expression(cs)
 
-    print(f"Solving: {expr}")
-
     return _solve_with_assignment(expr, dict())
