@@ -1,0 +1,25 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.21)  5 NOV 2025 11:06
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**"c:/Users/kitma/projects/exeter/coursework/ECM3412 Nature-Inspired Computation/template.tex"
+(c:/Users/kitma/projects/exeter/coursework/ECM3412 Nature-Inspired Computation/template.tex
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+)
+! Emergency stop.
+<*> ...2 Nature-Inspired Computation/template.tex"
+                                                  
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 18 strings out of 469992
+ 790 string characters out of 5476430
+ 433696 words of memory out of 5000000
+ 28551 multiletter control sequences out of 15000+600000
+ 627721 words of font info for 40 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 12i,0n,13p,124b,8s stack positions out of 10000i,1000n,20000p,200000b,200000s
+!  ==> Fatal error occurred, no output PDF file produced!
