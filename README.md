@@ -10,6 +10,7 @@
 - **ECM2434 Software Development**: A large group project to produce a web app in DJango (77%).
 
 ## Third Year Modules
-- **ECM3412 Nature-Inspired Computation**: A literature review on the use of evolutionary algorithms to solve the Bin Packing Problem, and a Python implementation of a Genetic Algorithm to solve it (--%).
-- **ECM3422 Computability and Complexity**: Two implementations of a SAT solver in Python, one naive (brute-force) and one DPLL (--%).
-- **ECM3428 Algorithms that Changed the World**: A report on and Rust implementation of the LL(1) parsing algorithm (--%).
+- **ECM3408 Enterprise Computing**: A microservices project to create guardrails for and interact with a LLM (--%).
+- **ECM3412 Nature-Inspired Computation**: A literature review on the use of evolutionary algorithms to solve the Bin Packing Problem, and a Python implementation of a Genetic Algorithm to solve it (76%).
+- **ECM3422 Computability and Complexity**: Two implementations of a SAT solver in Python, one naive (brute-force) and one DPLL (89%).
+- **ECM3428 Algorithms that Changed the World**: A report on and Rust implementation of the LL(1) parsing algorithm (71%).
