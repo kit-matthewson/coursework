@@ -1,5 +1,7 @@
 #import "template.typ": ieee
 #import "@preview/wordometer:0.1.5": total-words, word-count
+#import "@preview/lovelace:0.3.0": *
+
 
 #show: word-count
 
@@ -16,9 +18,11 @@
 )
 
 _I certify that all material in this report which is not my own work has been identified._
+
+_Word Count: 1442_
 // #text(font: "Lucida Handwriting")[\- KM]
 
-// #pagebreak()
+#pagebreak()
 
 #word-count(total => [
   = The LL(1) Algorithm
@@ -82,8 +86,6 @@ _I certify that all material in this report which is not my own work has been id
   == Complexity Analysis
   For each token of input, the LL(1) algorithm performs a constant amount of work: it either exits, pops a terminal from the stack and advances the input, or looks up a production in the parsing table and adds symbols to the stack. Therefore, if $n$ is the number of tokens in the input string, the time complexity of the LL(1) algorithm is $O(n)$.
 
-  Calculating the time complexity of constructing the parsing table is more complex. // TODO
-
   == Applications
   As with many algorithms, the LL(1) parsing algorithm makes a trade-off for effciency. By limiting the class of grammars that can be parsed, the algorithm achieves linear time complexity. Consider syntax highlighting in a text editor. The editor needs to parse the source code as the user types, but it is not essential if the parsing is not perfect for incorrect syntax.
 
@@ -98,10 +100,207 @@ _I certify that all material in this report which is not my own work has been id
 
   A good parser should also be robust and provide meaningful error messages, which can be achieved with an LL(1) parser but at the cost of performance.
 
-  Word Count: #total.words
+  //   Word Count: #total.words
 ])
 
 = Pseudo Code
+The following pseudo code describes the LL(1) parsing algorithm and the construction of the predictive parsing table.
+
+#pseudocode-list()[
+  + *procedure* Parse(input_buffer, parsing_table)
+    + stack $arrow.l { \$, S}$
+
+    + *while* stack $!=$ $emptyset$ *do*
+      + $X$ $arrow.l$ pop(stack)
+      + $a$ $arrow.l$ peek(input_buffer)
+      + *if* $X = a$ and $a = \$$ *then*
+        + *return* true
+      + *else if* $X = a$ *then*
+        + pop(input_buffer)
+      + *else if* $X$ is a nonterminal *then*
+        + rule $arrow.l$ parsing_table[$X$, $a$]
+        + *if* rule $=$ error *then*
+          + *return* false
+        + *else*
+          + pop(stack)
+          + *for* symbol *in* reverse(rule) *do*
+            + push(stack, symbol)
+          + *end for*
+      + *end if*
+    + *end while*
+
+  + *end procedure*
+]
+
+#pseudocode-list()[
+  + *procedure* ConstructParsingTable(grammar)
+    + parsing_table $arrow.l$ ${}$
+
+    + *for each* production $A arrow.r alpha$ *in* grammar *do*
+      + *for each* terminal $a$ *in* FIRST($alpha$) *do*
+        + parsing_table[$A$, $a$] $arrow.l$ $alpha$
+      + *end for*
+      + *if* $epsilon.alt$ *in* FIRST($alpha$) *then*
+        + *for each* terminal $b$ *in* FOLLOW($A$) *do*
+          + parsing_table[$A$, $b$] $arrow.l$ $alpha$
+        + *end for*
+        + *if* \$ *in* FOLLOW($A$) *then*
+          + parsing_table[$A$, \$] $arrow.l$ $alpha$
+        + *end if*
+      + *end if*
+    + *end for*
+
+    + *for each* cell *in* parsing_table *do*
+      + *if* cell is empty *then*
+        + cell $arrow.l$ error
+      + *end if*
+    + *end for*
+
+    + *return* parsing_table
+  + *end procedure*
+]
 
 = Appendix
 _This section was generated entirely by prompting a LLM._
+
+== Definition
+LL(1) is a top-down parsing method for a subset of Context-Free Grammars (CFGs).
+- *L*: Scans input from Left to right.
+- *L*: Constructs a Leftmost derivation.
+- *1*: Uses *1* token of lookahead to determine the next production.
+
+== Grammar Prerequisites
+To be LL(1), a grammar $G$ must satisfy specific structural properties.
+
+=== 1. No Left Recursion
+The grammar cannot contain derivations of the form $A arrow.double.r A alpha$.
+Direct left recursion ($A arrow A alpha | beta$) causes an infinite loop in top-down parsers.
+*Resolution:* Rewrite using right recursion.
+
+=== 2. Left Factored
+The grammar must not have common prefixes in alternatives.
+If $A arrow alpha beta_1 | alpha beta_2$, the parser cannot decide which path to take based on $"FIRST"(alpha)$.
+*Resolution:* Factor out $alpha$ into a new non-terminal:
+$
+   A & arrow alpha A' \
+  A' & arrow beta_1 | beta_2
+$
+
+== Lookahead Sets
+The parsing table construction relies on two helper functions.
+
+=== FIRST($alpha$)
+The set of terminals that begin strings derived from $alpha$.
+$ "FIRST"(alpha) = { a in Sigma | alpha arrow.double.r a... } union { epsilon | alpha arrow.double.r epsilon } $
+
+=== FOLLOW($A$)
+The set of terminals that can appear immediately to the right of non-terminal $A$ in some sentential form.
+$ "FOLLOW"(A) = { a in Sigma | S arrow.double.r ... A a ... } $
+Note: If $A$ is the rightmost symbol, $\$ in "FOLLOW"(A)$ (where $\$$ is EOF).
+
+== The LL(1) Condition (Strong LL(1))
+A grammar $G$ is LL(1) if and only if for every pair of productions $A arrow alpha | beta$:
+
+1. *Disjoint First Sets:* The first sets of the alternatives must not overlap.
+  $ "FIRST"(alpha) inter "FIRST"(beta) = nothing $
+
+2. *Nullable Safety:* If $beta arrow.double.r epsilon$, then $alpha$ cannot derive any string starting with a terminal in $"FOLLOW"(A)$.
+  $ epsilon in "FIRST"(beta) arrow.double "FIRST"(alpha) inter "FOLLOW"(A) = nothing $
+
+== Parsing Algorithm
+The parser uses a stack, an input buffer, and a parsing table $M[A, a]$.
+
+=== Parsing Table Construction
+For each production $A arrow alpha$:
+1. For each terminal $a in "FIRST"(alpha)$, add $A arrow alpha$ to $M[A, a]$.
+2. If $epsilon in "FIRST"(alpha)$, add $A arrow alpha$ to $M[A, b]$ for each $b in "FOLLOW"(A)$.
+3. If $epsilon in "FIRST"(alpha)$ and $\$ in "FOLLOW"(A)$, add $A arrow alpha$ to $M[A, \$]$.
+
+== Complexity Analysis
+The efficiency of LL(1) parsing is split into table construction and runtime parsing.
+
+=== Time Complexity
+- *Parsing:* $O(m)$ where $m$ is the length of the input string. Since the grammar is non-left-recursive and left-factored, the parser makes a deterministic decision at each step without backtracking.
+- *Table Construction:* $O(N^2)$ generally, or up to $O(N^4)$ depending on the iterative implementation of FIRST and FOLLOW sets, where $N$ is the size of the grammar.
+
+=== Space Complexity
+- *Parsing:* $O(D)$ stack space, where $D$ is the maximum depth of the parse tree (proportional to tree height).
+- *Table Storage:* $O(|V| times |Sigma|)$ for the parsing table $M$, where $V$ is the set of non-terminals and $Sigma$ is the set of terminals. Sparse table representations can reduce this.
+
+== Applications
+While less powerful than bottom-up parsers (like LR), LL(1) is favored for specific use cases due to its simplicity and predictable error reporting.
+- *Recursive Descent Prototyping:* LL(1) grammars map one-to-one with hand-written recursive descent parsers, making them ideal for bootstrap compilers.
+- *Configuration Languages:* Efficient for parsing linear, hierarchical data formats like JSON or simple config files.
+- *IDEs and Tools:* The predictable top-down nature allows for good error recovery and syntax highlighting implementation in lightweight tools.
+
+== Limitations
+LL(1) is a strict subset of Context-Free Grammars, limiting its expressiveness compared to LR(1) or LALR(1).
+1. *No Left Recursion:* Requires rewriting the grammar (right recursion), which changes the associativity of operators and can obscure the natural semantic structure.
+2. *Limited Lookahead:* Cannot resolve conflicts that require more than 1 token of context.
+3. *Ambiguity:* Cannot parse ambiguous grammars. Common constructs like the "dangling else" problem ($S arrow "if" E "then" S | "if" E "then" S "else" S$) introduce FIRST/FOLLOW conflicts that must be resolved by grammar transformation or ad-hoc precedence rules.
+
+== Driver Logic (Pseudocode)
+#pseudocode-list()[
+  + *procedure* Parse(input_buffer, parsing_table)
+    + $"stack"$ $arrow.l$ [EOF, StartSymbol] // Initialize stack with EOF and the grammar's start symbol
+    + $"current"\_"token"$ $arrow.l$ Next(input_buffer) // Initialize with the first input token
+
+    + *while* $"stack"$.top $!=$ EOF *do*
+      + $X$ $arrow.l$ $"stack"$.top // $X$ is the symbol on top of the stack
+      + $a$ $arrow.l$ $"current"\_"token".$type // $a$ is the current input lookahead terminal
+
+      + *if* $X$ is a terminal *then*
+        + *if* $X = a$ *then*
+          + $"stack"$.pop() // Match the terminal
+          + $"current"\_"token"$ $arrow.l$ Next(input_buffer) // Advance input
+        + *else*
+          + Error("Mismatched terminal")
+          + *break*
+        + *end if*
+
+      + *else* // $X$ is a non-terminal
+        + $M$ $arrow.l$ $"parsing"\_"table"$[$X$, $a$] // Look up the production in the LL(1) table
+        + *if* $M !=$ Error *then*
+          + $"stack"$.pop() // Remove $X$ from stack
+          + $R$ $arrow.l$ reverse($M$) // Reverse the production body (RHS)
+          + *for* $Y$ *in* $R$ *do*
+            + *if* $Y != epsilon$ *then* // Push symbols of the RHS, ignoring epsilon
+              + $"stack"$.push($Y$)
+            + *end if*
+          + *end for*
+          + OutputProductionRule($X \to M$) // Record the rule used (for a parse tree)
+        + *else*
+          + Error("No rule found for non-terminal $X$ with lookahead $a$")
+          + *break*
+        + *end if*
+      + *end if*
+    + *end while*
+
+    + *if* $"current"\_"token".$type = EOF *then*
+      + Accept// Successful parse
+    + *else*
+      + Error("Stack is empty, but input remains")
+    + *end if*
+
+  + *end procedure*
+]
+
+= Details of LLM Generation
+== Prompts
+I used Gemini 2.5 Flash to generate the appendix. The prompts used were:
++ You are a computer science final year student. Write the main principles about the LL(1) parsing algorithm. Give your response in the form of Typst code.
++ Add sections for complexity analysis, applications, and limitations.
++ Produce a section of pseudocode to describe the algorithm.
+
+== Analysis
+I feel that the sections describing the algorithm feel rushed and lack depth compared to my report. For example, the grammar prerequesits section does not explain why left recursion and left factoring are necessary. This could make understanding the rest of the report difficult for someone not already familiar with grammars.
+
+The complexity analysis section gives the correct complexity for parsing, but gives a table construction complexity without explaining why it is that complexity. It also provides a space complexity analysis which I did not include in my report.
+
+The applications section gives some good examples that are similar to those that I gave. The limitations section is also good, and identifies the 'dangling else' problem as an example of ambiguity, which I did not mention.
+
+The generated pseudocode is slightly more verbose than mine and I think harder to understand, although it does appear to be correct. No pseudocode was generated for the parsing table construction, which would have been a useful addition.
+
+The generated report does not include any references, which makes it difficult to verify the information given or to read further on the topic.
+
+Overall, I think that the generated report is a good starting point and could be refined with further prompting to add more detail in certain sections. However, it would be difficult to do this (and verify the generated content) without already having good knowledge of the topic.
